@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ranjana Didi Ko Achar</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-yellow-50 text-gray-800 font-sans">
+
+  <!-- Header -->
+  <header class="bg-yellow-500 text-white p-6 text-center shadow">
+    <h1 class="text-3xl font-bold">Ranjana Didi Ko Achar</h1>
+    <p class="mt-2">Handmade Pickles with Love</p>
+  </header>
+
+  <!-- Main content -->
+  <main class="p-6 max-w-4xl mx-auto">
+    <ul id="pickleList" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <!-- Pickles will be dynamically added here -->
+    </ul>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-yellow-500 text-white text-center p-4 mt-6 shadow">
+    &copy; 2026 Ranjana Didi Ko Achar
+  </footer>
+
+  <script>
+    const whatsappNumber = "9765043777";
+
+    // Array of pickles with gram variant and price
+    const pickles = [
+      { name: "Mango Pickle", gram: 250, price: 200 },
+      { name: "Lemon Pickle", gram: 200, price: 180 },
+      { name: "Carrot Pickle", gram: 300, price: 220 },
+      { name: "Mixed Veg Pickle", gram: 350, price: 250 },
+    ];
+
+    const listContainer = document.getElementById('pickleList');
+
+    pickles.forEach(pickle => {
+      const li = document.createElement('li');
+      li.className = "bg-white rounded-lg p-5 shadow hover:shadow-lg transition";
+
+      // WhatsApp link
+      const message = encodeURIComponent(`Hello! I want to order ${pickle.name} (${pickle.gram}g)`);
+      const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+      li.innerHTML = `
+        <h2 class="text-xl font-semibold mb-1">${pickle.name}</h2>
+        <p class="mb-2"><strong>Gram:</strong> ${pickle.gram}g</p>
+        <p class="mb-4"><strong>Price:</strong> Rs ${pickle.price}</p>
+        <a href="${whatsappLink}" target="_blank" class="inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">
+          Order Now
+        </a>
+      `;
+      listContainer.appendChild(li);
+    });
+  </script>
+
+</body>
+</html>
