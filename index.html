@@ -6,15 +6,24 @@
   <title>Ranjana Didi Ko Achar</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-yellow-50 text-gray-800 font-sans">
+<body class="font-sans" style="background-image: url('pattern.png'); background-repeat: repeat; background-size: auto;">
+
+  <!-- Navigation -->
+  <nav class="bg-white shadow p-4 flex justify-between items-center">
+    <div class="flex items-center space-x-3">
+      <img src="nav_logo.png" alt="Nav Logo" class="h-10 w-10">
+      <span class="text-xl font-bold text-gray-800">Ranjana Didi Ko Achar</span>
+    </div>
+    <img src="logo.png" alt="Main Logo" class="h-12">
+  </nav>
 
   <!-- Header -->
-  <header class="bg-yellow-500 text-white p-6 text-center shadow">
-    <h1 class="text-3xl font-bold">Ranjana Didi Ko Achar</h1>
-    <p class="mt-2">Handmade Pickles with Love</p>
+  <header class="text-center p-10">
+    <h1 class="text-4xl font-bold text-gray-800 mb-2">Handmade Pickles with Love</h1>
+    <p class="text-gray-700">Choose your favorite and order directly via WhatsApp</p>
   </header>
 
-  <!-- Main content -->
+  <!-- Pickle List -->
   <main class="p-6 max-w-4xl mx-auto">
     <ul id="pickleList" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
       <!-- Pickles will be dynamically added here -->
@@ -22,7 +31,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="bg-yellow-500 text-white text-center p-4 mt-6 shadow">
+  <footer class="bg-white text-center p-6 mt-10 shadow">
     &copy; 2026 Ranjana Didi Ko Achar
   </footer>
 
