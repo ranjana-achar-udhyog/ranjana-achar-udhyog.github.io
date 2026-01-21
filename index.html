@@ -4,38 +4,46 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ranjana Didi Ko Achar</title>
+  <link rel="icon" href="logo.png" type="image/png">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-sans bg-yellow-50" style="background-image: url('pattern.png'); background-repeat: repeat; background-size: auto;">
+<body class="font-sans bg-yellow-50" style="background-image: url('pattern.png'); background-repeat: repeat; background-size: cover;">
 
   <!-- Navigation -->
-  <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-md p-4 flex justify-between items-center">
+  <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-md p-4 flex justify-between items-center">
     <div class="flex items-center space-x-3">
-      <img src="nav_logo.png" alt="Nav Logo" class="h-10 w-16 object-contain">
+      <img src="nav_logo.png" alt="Nav Logo" class="h-12 w-auto object-contain">
+      <span class="text-2xl font-bold text-red-600">Ranjana Didi Ko Achar</span>
     </div>
+    <a href="#pickleList" class="text-green-700 font-semibold hover:text-green-900 transition">Our Pickles</a>
   </nav>
+
   <!-- Hero Section -->
-  <header class="text-center py-16 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 shadow-inner">
-    <h1 class="text-5xl font-extrabold text-gray-800 mb-4">Handmade Pickles with Love</h1>
-    <p class="text-gray-700 text-lg max-w-xl mx-auto">Choose your favorite pickle and order directly via WhatsApp</p>
+  <header class="text-center py-20 bg-gradient-to-r from-red-500 via-red-400 to-red-500 text-white relative overflow-hidden">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-4 drop-shadow-lg">Handmade Pickles with Love</h1>
+    <p class="text-lg md:text-xl max-w-2xl mx-auto drop-shadow-md">Choose your favorite pickle and order directly via WhatsApp</p>
+    <img src="logo.png" alt="Logo" class="absolute bottom-0 right-10 h-32 opacity-20">
   </header>
 
   <!-- Pickle List -->
-  <main class="p-6 max-w-5xl mx-auto -mt-16">
-    <ul id="pickleList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <main class="p-6 max-w-6xl mx-auto -mt-16">
+    <ul id="pickleList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
       <!-- Pickles will be dynamically added here -->
     </ul>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-yellow-400 text-white text-center p-6 mt-12 shadow-inner">
-    &copy; 2026 Ranjana Didi Ko Achar | Handmade with ❤️
+  <footer class="bg-red-500 text-white text-center p-8 mt-12 shadow-inner">
+    <p class="text-lg mb-2">&copy; 2026 Ranjana Didi Ko Achar</p>
+    <p class="text-sm">Handmade with ❤️ | Order now via WhatsApp</p>
+    <a href="https://wa.me/9765043777" target="_blank" class="inline-block mt-4 bg-green-600 hover:bg-green-700 transition text-white px-6 py-2 rounded-full font-semibold">
+      WhatsApp Order
+    </a>
   </footer>
 
   <script>
     const whatsappNumber = "9765043777";
 
-    // Pickle array with gram and price
     const pickles = [
       { name: "Mango Pickle", gram: 250, price: 200 },
       { name: "Lemon Pickle", gram: 200, price: 180 },
@@ -49,20 +57,24 @@
 
     pickles.forEach(pickle => {
       const li = document.createElement('li');
-      li.className = "bg-white/90 backdrop-blur-md rounded-xl p-6 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1";
+      li.className = `
+        bg-white/90 backdrop-blur-md rounded-2xl p-6 shadow-lg hover:shadow-2xl 
+        transition transform hover:-translate-y-1 hover:scale-105 flex flex-col justify-between
+      `;
 
-      // WhatsApp link
       const message = encodeURIComponent(`Hello! I want to order ${pickle.name} (${pickle.gram}g)`);
       const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
 
       li.innerHTML = `
-        <h2 class="text-2xl font-bold mb-2 text-yellow-800">${pickle.name}</h2>
-        <p class="mb-2 text-gray-700"><strong>Gram:</strong> ${pickle.gram}g</p>
+        <h2 class="text-2xl font-bold mb-2 text-red-600">${pickle.name}</h2>
+        <p class="mb-1 text-gray-700"><strong>Gram:</strong> ${pickle.gram}g</p>
         <p class="mb-4 text-gray-700"><strong>Price:</strong> Rs ${pickle.price}</p>
-        <a href="${whatsappLink}" target="_blank" class="inline-block bg-green-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-600 transition">
+        <a href="${whatsappLink}" target="_blank" 
+           class="mt-auto bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full font-semibold transition text-center">
           Order Now
         </a>
       `;
+
       listContainer.appendChild(li);
     });
   </script>
