@@ -6,10 +6,10 @@
   <title>Ranjana Didi Ko Achar</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="font-sans" style="background-image: url('pattern.png'); background-repeat: repeat; background-size: auto;">
+<body class="font-sans bg-yellow-50" style="background-image: url('pattern.png'); background-repeat: repeat; background-size: auto;">
 
   <!-- Navigation -->
-  <nav class="bg-white shadow p-4 flex justify-between items-center">
+  <nav class="bg-white/90 backdrop-blur-md sticky top-0 z-50 shadow-md p-4 flex justify-between items-center">
     <div class="flex items-center space-x-3">
       <img src="nav_logo.png" alt="Nav Logo" class="h-10 w-10">
       <span class="text-xl font-bold text-gray-800">Ranjana Didi Ko Achar</span>
@@ -17,50 +17,52 @@
     <img src="logo.png" alt="Main Logo" class="h-12">
   </nav>
 
-  <!-- Header -->
-  <header class="text-center p-10">
-    <h1 class="text-4xl font-bold text-gray-800 mb-2">Handmade Pickles with Love</h1>
-    <p class="text-gray-700">Choose your favorite and order directly via WhatsApp</p>
+  <!-- Hero Section -->
+  <header class="text-center py-16 bg-gradient-to-r from-yellow-400 via-yellow-300 to-yellow-400 shadow-inner">
+    <h1 class="text-5xl font-extrabold text-gray-800 mb-4">Handmade Pickles with Love</h1>
+    <p class="text-gray-700 text-lg max-w-xl mx-auto">Choose your favorite pickle and order directly via WhatsApp</p>
   </header>
 
   <!-- Pickle List -->
-  <main class="p-6 max-w-4xl mx-auto">
-    <ul id="pickleList" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+  <main class="p-6 max-w-5xl mx-auto -mt-16">
+    <ul id="pickleList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
       <!-- Pickles will be dynamically added here -->
     </ul>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-white text-center p-6 mt-10 shadow">
-    &copy; 2026 Ranjana Didi Ko Achar
+  <footer class="bg-yellow-400 text-white text-center p-6 mt-12 shadow-inner">
+    &copy; 2026 Ranjana Didi Ko Achar | Handmade with ❤️
   </footer>
 
   <script>
     const whatsappNumber = "9765043777";
 
-    // Array of pickles with gram variant and price
+    // Pickle array with gram and price
     const pickles = [
       { name: "Mango Pickle", gram: 250, price: 200 },
       { name: "Lemon Pickle", gram: 200, price: 180 },
       { name: "Carrot Pickle", gram: 300, price: 220 },
       { name: "Mixed Veg Pickle", gram: 350, price: 250 },
+      { name: "Spicy Garlic Pickle", gram: 250, price: 210 },
+      { name: "Ginger Pickle", gram: 200, price: 190 },
     ];
 
     const listContainer = document.getElementById('pickleList');
 
     pickles.forEach(pickle => {
       const li = document.createElement('li');
-      li.className = "bg-white rounded-lg p-5 shadow hover:shadow-lg transition";
+      li.className = "bg-white/90 backdrop-blur-md rounded-xl p-6 shadow-lg hover:shadow-2xl transition transform hover:-translate-y-1";
 
       // WhatsApp link
       const message = encodeURIComponent(`Hello! I want to order ${pickle.name} (${pickle.gram}g)`);
       const whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
 
       li.innerHTML = `
-        <h2 class="text-xl font-semibold mb-1">${pickle.name}</h2>
-        <p class="mb-2"><strong>Gram:</strong> ${pickle.gram}g</p>
-        <p class="mb-4"><strong>Price:</strong> Rs ${pickle.price}</p>
-        <a href="${whatsappLink}" target="_blank" class="inline-block bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition">
+        <h2 class="text-2xl font-bold mb-2 text-yellow-800">${pickle.name}</h2>
+        <p class="mb-2 text-gray-700"><strong>Gram:</strong> ${pickle.gram}g</p>
+        <p class="mb-4 text-gray-700"><strong>Price:</strong> Rs ${pickle.price}</p>
+        <a href="${whatsappLink}" target="_blank" class="inline-block bg-green-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-green-600 transition">
           Order Now
         </a>
       `;
